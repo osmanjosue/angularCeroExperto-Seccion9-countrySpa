@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'shared-searchBox',
@@ -8,7 +8,15 @@ import { Component, Input, OnInit } from '@angular/core';
 export class SearchBoxComponent implements OnInit {
 
   @Input()
-  public placeholder: string='';
+  public placeholder: string = '';
+
+  @Output()
+  public onValue = new EventEmitter<string>();
+  // public onValue: EventEmitter<string> = new EventEmitter<string>();
+
+  emitValue( value: string): void {
+    this.onValue.emit( value );
+  }
 
   constructor() { }
 
